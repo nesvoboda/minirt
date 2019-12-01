@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 09:15:47 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/01 09:28:26 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/01 09:46:41 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <math.h>
-
+#include "v3.h"
+#include "ray.h"
 #define IMG_HEIGHT 1200
 #define IMG_WIDTH 1600
 #define FOV 90
@@ -22,6 +23,23 @@ typedef struct	s_sphere
 	t_v3 center;
 	double radius;
 }				t_sphere;
+
+t_ray	ray_to_pixel(int x, int y)
+{
+	double aspect_ratio;
+	double p_x;
+	double p_y;
+	t_ray result;
+	t_v3	direction;
+// tan(FOV / 2 * M_PI / 180)
+	aspect_ratio = (double)IMG_WIDTH / (double)IMG_HEIGHT;
+	p_x = (2 * (x + 0.5) / (double)IMG_WIDTH - 1) * aspect_ratio;
+	p_y = (1 - 2 * (y + 0.5) / (double)IMG_HEIGHT);
+	direction = create_v3(p_x, p_y, -1);
+	normalize_vector(&direction);
+	result = create_ray(create_v3(0, 0, 0), direction);
+	return (result);
+}
 
 int solveQuadratic(double a, double b, double c, double *x0, double *x1) 
 { 
@@ -69,7 +87,6 @@ int	intersect_sphere(t_ray ray, t_sphere sphere)
 		tca = dot_product(l, ray.direction);
 		if (tca < 0)
 		{
-			printf("Tca < 0");
 			return (0);
 		}
 

@@ -6,9 +6,11 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 09:17:58 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/01 09:23:40 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/01 09:43:38 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "v3.h"
 
 void	normalize_vector(t_v3 *vector)
 {
