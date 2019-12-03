@@ -6,11 +6,12 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 09:17:58 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/01 09:43:38 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/03 16:37:18 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v3.h"
+#include <math.h>
 
 void	normalize_vector(t_v3 *vector)
 {
@@ -37,16 +38,14 @@ double	vector_len(t_v3 vector)
 	vector.x *= vector.x;
 	vector.y *= vector.y;
 	vector.z *= vector.z;
-	return (sqrt(vector.x + vector.y + vector.z));
+	return (sqrt(pow(vector.x, 2) + pow(vector.y, 2) + pow(vector.z, 2)));
 }
 
 double dot_product(t_v3 a, t_v3 b)
 {
         double sum = 0;
-        
- 		sum += (a.x * b.x);
-		sum += (a.y * b.y);
-		sum += (a.z * b.z);
+
+ 		sum = (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
         return sum;
 }
 
@@ -54,8 +53,28 @@ t_v3	substract(t_v3 vec1, t_v3 vec2)
 {
 	t_v3 result;
 
-	result.z = vec1.x - vec2.x;
+	result.x = vec1.x - vec2.x;
 	result.y = vec1.y - vec2.y;
 	result.z = vec1.z - vec2.z;
+	return (result);
+}
+
+t_v3	v3_add(t_v3 vec1, t_v3 vec2)
+{
+	t_v3 result;
+
+	result.x = vec1.x + vec2.x;
+	result.y = vec1.y + vec2.y;
+	result.z = vec1.z + vec2.z;
+	return (result);
+}
+
+t_v3	v3_multiply(t_v3 vec1, double x)
+{
+	t_v3 result;
+
+	result.x = vec1.x * x;
+	result.y = vec1.y * x;
+	result.z = vec1.z * x;
 	return (result);
 }
