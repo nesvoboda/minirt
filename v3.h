@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 09:18:41 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/03 15:27:25 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:57:53 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_v3	substract(t_v3 vec1, t_v3 vec2);
 void	normalize_vector(t_v3 *vector);
 t_v3	v3_add(t_v3 vec1, t_v3 vec2);
 t_v3	v3_multiply(t_v3 vec1, double x);
+t_v3	cross_product(t_v3 a, t_v3 b);
 
 #endif
