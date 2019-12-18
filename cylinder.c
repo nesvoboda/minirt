@@ -6,11 +6,13 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:45:32 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 17:02:32 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/18 17:40:11 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cylinder.h"
+#include "plane.h"
+#include <math.h>
 
 t_cylinder	*new_cylinder(t_v3 p, t_v3 normal, double radius, double height)
 {
@@ -67,5 +69,30 @@ int				intersect_cylinder(t_ray ray, t_cylinder cylinder, double *t)
 
 	if (dot_product(cylinder.normal, substract(q, p2)) >= 0)
 		return (0);
+
+	double t3;
+	double t4;
+	t_v3 v;
+	t_plane *bottom_plane = new_plane(cylinder.p, cylinder.normal);
+	t_plane *top_plane = new_plane(p2, cylinder.normal);
+	if (intersect_plane(ray, *bottom_plane, &t3))
+	{
+		q = v3_add(ray.origin, v3_multiply(ray.direction, t3));
+		v = substract(q, cylinder.p);
+		if (sqrt(dot_product(v, v)) >= cylinder.radius)
+			t3 = -1;
+	}
+	if (intersect_plane(ray, *top_plane, &t4))
+	{
+		q = v3_add(ray.origin, v3_multiply(ray.direction, t4));
+		v = substract(q, p2);
+		if (sqrt(dot_product(v, v)) >= cylinder.radius)
+			t4 = -1;
+	}
+	if (t4 < t3)
+		swap_doubles(&t3, &t4);
+	if (t3 < *t && t3 >= 0)
+		*t = t3;
+
 	return (1);
 }
