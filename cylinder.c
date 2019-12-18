@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:45:32 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 14:08:50 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/18 17:02:32 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ int				intersect_cylinder(t_ray ray, t_cylinder cylinder, double *t)
 								dot_product(ray.direction, cylinder.normal)));
 	double a = dot_product(a_sqrt, a_sqrt);
 
-	t_v3 cent = v3_multiply(cylinder.normal, dot_product(cylinder.normal,
-												substract(point, cylinder.p)));
-
 	t_v3 dp = substract(ray.origin, cylinder.p);
 	t_v3 right = substract(dp,
 						v3_multiply(cylinder.normal,
@@ -58,7 +55,17 @@ int				intersect_cylinder(t_ray ray, t_cylinder cylinder, double *t)
 			t0 = t1; // if t0 is negative, let's use t1 instead
 			if (t0 < 0)
 				return (0); // both t0 and t1 are negative
-		}
-		*t = t0;
-		return (1);
+	}
+	*t = t0;
+
+	t_v3 q = v3_add(ray.origin, v3_multiply(ray.direction, *t));
+
+	t_v3 p2 = v3_add(cylinder.p, v3_multiply(cylinder.normal, cylinder.height));
+
+	if (dot_product(cylinder.normal, substract(q, cylinder.p)) <= 0)
+		return (0);
+
+	if (dot_product(cylinder.normal, substract(q, p2)) >= 0)
+		return (0);
+	return (1);
 }
