@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:12 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 09:32:30 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/18 14:06:44 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,14 @@ t_list		*get_objects()
 	// object = new_object(TRIANGLE, new_triangle(create_v3(0,-1,-3), create_v3(2,-1, -5), create_v3(-2,-1,-5)), 0xff);
 	// ft_lstadd_back(&result, ft_lstnew(object));
 
-	object = new_object(SQUARE,
-		new_square(create_v3(0, 0, -5), square_vector, 2), 0xff);
+	// object = new_object(SQUARE,
+	// 	new_square(create_v3(0, 0, -5), square_vector, 2), 0xff);
+	// ft_lstadd_back(&result, ft_lstnew(object));
+
+	object = new_object(CYLINDER,
+	new_cylinder(create_v3(0, 0, -5), plane_vector, 2, 3), 0xff);
 	ft_lstadd_back(&result, ft_lstnew(object));
+
 	return (result);
 }
 
