@@ -1,7 +1,0 @@
-#include "color.h"
-
-int main()
-{
-	t_color a = int_to_color(6592170);
-	printf("Red %d, green %d, blue %d", a.red, a.green, a.blue);
-}

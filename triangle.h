@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   triangle.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/01 10:53:27 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/17 13:53:00 by ashishae         ###   ########.fr       */
+/*   Created: 2019/12/17 12:43:27 by ashishae          #+#    #+#             */
+/*   Updated: 2019/12/17 13:50:59 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef TRIANGLE_H
+# define TRIANGLE_H
+# include "v3.h"
+# include "ray.h"
 
-# include <stdlib.h>
-
-typedef struct	s_list
+typedef struct s_triangle
 {
-	void			*content;
-	struct s_list	*next;
-}				t_list;
+	t_v3 a;
+	t_v3 b;
+	t_v3 c;
 
-t_list			*ft_lstlast(t_list *lst);
-void			ft_lstadd_back(t_list **alst, t_list *new);
-t_list			*ft_lstnew(void *content);
+}				t_triangle;
 
-# endif
+t_triangle		*new_triangle(t_v3 a, t_v3 b, t_v3 c);
+t_v3	get_triangle_normal(t_triangle triangle);
+int intersect_triangle(t_ray ray, t_triangle triangle, double *t);
+
+#endif

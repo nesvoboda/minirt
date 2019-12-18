@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/01 10:53:27 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/17 13:53:00 by ashishae         ###   ########.fr       */
+/*   Created: 2019/12/17 13:51:24 by ashishae          #+#    #+#             */
+/*   Updated: 2019/12/18 10:07:30 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef MINIRT_H
+# define MINIRT_H
 
+# include <mlx.h>
+# include <math.h>
+# include "v3.h"
+# include "ray.h"
+# include "list.h"
+# include "color.h"
+# include "sphere.h"
+# include "triangle.h"
+# include "plane.h"
+# include "scene.h"
+# include "square.h"
+# include "cylinder.h"
+# include "intersect.h"
+# include "shading.h"
 # include <stdlib.h>
+# define IMG_HEIGHT 1000
+# define IMG_WIDTH 1000
+# define FOV 90
 
-typedef struct	s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
-
-t_list			*ft_lstlast(t_list *lst);
-void			ft_lstadd_back(t_list **alst, t_list *new);
-t_list			*ft_lstnew(void *content);
-
-# endif
+#endif
