@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:12 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 17:11:49 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/18 19:59:27 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ t_list		*get_objects()
 	// 	new_sphere(create_v3(-2, -1, -5), 0.5), 0xff0000);
 	// ft_lstadd_back(&result, ft_lstnew(object));
 
-	// object = new_object(SPHERE,
-	// 	new_sphere(create_v3(0, -2, -4), 0.5), 0xff0000);
-	// ft_lstadd_back(&result, ft_lstnew(object));
+	object = new_object(SPHERE,
+		new_sphere(create_v3(0, -3, -7), 0.5), 0xff0000);
+	ft_lstadd_back(&result, ft_lstnew(object));
 
 	t_v3 plane_vector = create_v3(0, 1, 0);
 	normalize_vector(&plane_vector);
@@ -69,7 +69,7 @@ t_list		*get_objects()
 	// ft_lstadd_back(&result, ft_lstnew(object));
 
 	object = new_object(CYLINDER,
-	new_cylinder(create_v3(0, -2, -5), plane_vector, 2, 1), 0xff);
+	new_cylinder(create_v3(0, -3, -7), plane_vector, 2, 1), 0xff);
 	ft_lstadd_back(&result, ft_lstnew(object));
 
 	return (result);
@@ -80,11 +80,11 @@ t_list		*get_lights()
 	t_list *result = NULL;
 	t_light *light;
 
-	light = new_light(0xffffff, 0.5, create_v3(-5, 5, -4));
+	light = new_light(0xffffff, 0.3, create_v3(-5, 5, -4));
 	ft_lstadd_back(&result, ft_lstnew(light));
-	light = new_light(0xffffff, 0.5, create_v3(5, 5, -4));
+	light = new_light(0xffffff, 0.3, create_v3(5, 5, -4));
 	ft_lstadd_back(&result, ft_lstnew(light));
-	light = new_light(0xffffff, 0.5, create_v3(-3, 0, 4));
+	light = new_light(0xffffff, 0.3, create_v3(-5, 5, 8));
 	ft_lstadd_back(&result, ft_lstnew(light));
 	return (result);
 }

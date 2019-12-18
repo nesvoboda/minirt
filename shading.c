@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:41:19 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 10:08:40 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/18 19:53:19 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ double		light_contribution(t_light light, t_v3 hit_point, t_v3 hit_normal, t_lis
 	double		to_light;
 
 	light_vector = substract(light.p0, hit_point);
+
 	light_ray = substract(light.p0, hit_point);
 	to_light = vector_len(light_ray);
 	normalize_vector(&light_ray);
 	normalize_vector(&light_vector);
 
 
-	lray = create_ray(v3_add(hit_point, v3_multiply(hit_normal, 0.00001)), light_ray);
-	if (!intersect_with_all(objects, lray, &closest_object2, &t) || t > to_light)
+	lray = create_ray(v3_add(hit_point, v3_multiply(hit_normal, 0.1)), light_ray);
+	if (!intersect_with_all(objects, lray, &closest_object2, &t) || t > to_light || t < 0)
 	{
 
 		coeff = fmax(0, dot_product(hit_normal, light_vector));
@@ -80,6 +81,8 @@ double		shade(t_list *objects, t_list *lights, t_ray sent, t_object *closest_obj
 
 	hit_point = v3_add(sent.origin, v3_multiply(sent.direction, t_min));
 	hit_normal = get_normal(hit_point, closest_object);
+	if (dot_product(sent.direction, hit_normal) > 0)
+	 	hit_normal = substract(create_v3(0, 0, 0), v3_multiply(hit_normal, 1));
 	runner = lights;
 	while (runner != NULL)
 	{
