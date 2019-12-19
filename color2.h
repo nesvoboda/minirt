@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   color2.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/17 13:51:24 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/19 10:52:56 by ashishae         ###   ########.fr       */
+/*   Created: 2019/12/19 10:56:15 by ashishae          #+#    #+#             */
+/*   Updated: 2019/12/19 12:26:10 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef COLOR2_H
+# define COLOR2_H
 
-# include <mlx.h>
-# include <math.h>
-# include "v3.h"
-# include "ray.h"
-# include "list.h"
 # include "color.h"
-# include "sphere.h"
-# include "triangle.h"
-# include "plane.h"
-# include "scene.h"
-# include "square.h"
-# include "cylinder.h"
-# include "intersect.h"
-# include "shading.h"
-# include "color2.h"
-# include <stdlib.h>
-# define IMG_HEIGHT 1000
-# define IMG_WIDTH 1000
-# define FOV 90
 
+
+typedef struct s_color2
+{
+	float red;
+	float green;
+	float blue;
+}				t_color2;
+
+t_color2 int_color(int color);
+t_color2 from_color(t_color a);
+t_color2 color2_add(t_color2 a, t_color2 b);
+t_color2 color2_mult(t_color2 a, t_color2 b);
+t_color2 color2_coeff(t_color2 a, double coeff);
 #endif

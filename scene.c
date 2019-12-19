@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:12 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 19:59:27 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/19 19:01:58 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_list		*get_objects()
 
 
 	object = new_object(PLANE,
-		new_plane(create_v3(0, -3, -10), plane_vector), 0xffa500);
+		new_plane(create_v3(0, -3, -10), plane_vector), 0xffffff);
 	ft_lstadd_back(&result, ft_lstnew(object));
 
 	// object = new_object(TRIANGLE, new_triangle(create_v3(0,-1,-3), create_v3(2,-1, -5), create_v3(-2,-1,-5)), 0xff);
@@ -80,11 +80,11 @@ t_list		*get_lights()
 	t_list *result = NULL;
 	t_light *light;
 
-	light = new_light(0xffffff, 0.3, create_v3(-5, 5, -4));
+	light = new_light(0xff, 0.5, create_v3(-5, 5, 0));
 	ft_lstadd_back(&result, ft_lstnew(light));
-	light = new_light(0xffffff, 0.3, create_v3(5, 5, -4));
+	light = new_light(0xff0000, 0.5, create_v3(5, 5, 0));
 	ft_lstadd_back(&result, ft_lstnew(light));
-	light = new_light(0xffffff, 0.3, create_v3(-5, 5, 8));
-	ft_lstadd_back(&result, ft_lstnew(light));
+	//light = new_light(0xff, 0.5, create_v3(5, 5, 0));
+	//ft_lstadd_back(&result, ft_lstnew(light));
 	return (result);
 }
