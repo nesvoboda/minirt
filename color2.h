@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:56:15 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/19 12:26:10 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 16:29:20 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,6 @@ t_color2 from_color(t_color a);
 t_color2 color2_add(t_color2 a, t_color2 b);
 t_color2 color2_mult(t_color2 a, t_color2 b);
 t_color2 color2_coeff(t_color2 a, double coeff);
+t_color2 from_rgb(int r, int g, int b);
+
 #endif

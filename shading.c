@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:41:19 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/20 12:10:55 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 18:41:51 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ t_color2		light_contribution(t_light light, t_v3 hit_point, t_v3 hit_normal, t_l
 	normalize_vector(&light_vector);
 
 	t_color2 light_color;
-	light_color = color2_coeff(int_color(light.color), light.intensity);
+	light_color = color2_coeff(light.color, light.intensity);
 	t_color2 object_color;
-	object_color = color2_coeff(int_color(closest_object->color), closest_object->albedo);
+	object_color = color2_coeff(closest_object->color, closest_object->albedo);
 	t_color2 specular_color;
 
 
@@ -148,9 +148,9 @@ int		get_color(t_scene *scene, t_ray sent)
 		// double ambient_max = 0.90 - fmin(0.99, coeff);
 
 
-		t_color2 ambient_color = color2_coeff(int_color(amb_color), amb_intensity);
+		t_color2 ambient_color = color2_coeff(scene->ambient_color, scene->ambient_intensity);
 		//printf("ambient: R %f G %f B %f\n", ambient_color.red, ambient_color.green, ambient_color.blue);
-		t_color2 object_color = int_color(closest_object->color);
+		t_color2 object_color = closest_object->color;
 
 
 

@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:12 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/20 12:24:47 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 16:28:12 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "list.h"
 #include "minirt.h"
 
-t_light *new_light(int color, double intensity, t_v3 p0)
+t_light *new_light(t_color2 color, double intensity, t_v3 p0)
 {
 	t_light *light;
 
@@ -26,7 +26,7 @@ t_light *new_light(int color, double intensity, t_v3 p0)
 	return (light);
 }
 
-t_object	*new_object(otype type, void *ptr, int color)
+t_object	*new_object(otype type, void *ptr, t_color2 color)
 {
 	t_object *result;
 	result = malloc(sizeof(t_object));
@@ -47,7 +47,7 @@ t_list		*get_objects()
 	// ft_lstadd_back(&result, ft_lstnew(object));
 
 	object = new_object(SPHERE,
-		new_sphere(create_v3(0, -3, -7), 0.5), 0xff0000);
+		new_sphere(create_v3(0, -3, -7), 0.5), int_color(0xff0000));
 	ft_lstadd_back(&result, ft_lstnew(object));
 
 	t_v3 plane_vector = create_v3(0, 1, 0);
@@ -58,7 +58,7 @@ t_list		*get_objects()
 
 
 	object = new_object(PLANE,
-		new_plane(create_v3(0, -3, -10), plane_vector), 0xffffff);
+		new_plane(create_v3(0, -3, -10), plane_vector), int_color(0xffffff));
 	ft_lstadd_back(&result, ft_lstnew(object));
 
 	// object = new_object(TRIANGLE, new_triangle(create_v3(0,-1,-3), create_v3(2,-1, -5), create_v3(-2,-1,-5)), 0xff);
@@ -69,7 +69,7 @@ t_list		*get_objects()
 	// ft_lstadd_back(&result, ft_lstnew(object));
 
 	object = new_object(CYLINDER,
-	new_cylinder(create_v3(0, -3, -7), plane_vector, 2, 1), 0xff);
+	new_cylinder(create_v3(0, -3, -7), plane_vector, 2, 1), int_color(0xff));
 	ft_lstadd_back(&result, ft_lstnew(object));
 
 	return (result);
@@ -80,9 +80,9 @@ t_list		*get_lights()
 	t_list *result = NULL;
 	t_light *light;
 
-	light = new_light(0xff, 0.5, create_v3(-5, 5, 0));
+	light = new_light(int_color(0xff), 0.5, create_v3(-5, 5, 0));
 	ft_lstadd_back(&result, ft_lstnew(light));
-	light = new_light(0xff0000, 0.5, create_v3(5, 5, 0));
+	light = new_light(int_color(0xff0000), 0.5, create_v3(5, 5, 0));
 	ft_lstadd_back(&result, ft_lstnew(light));
 	//light = new_light(0xff, 0.5, create_v3(5, 5, 0));
 	//ft_lstadd_back(&result, ft_lstnew(light));

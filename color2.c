@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:57:02 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/19 11:42:21 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 16:41:06 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ t_color2 from_color(t_color a)
 	result.red = a.red / 256;
 	result.green = a.green / 256;
 	result.blue = a.blue / 256;
+	return (result);
+}
+
+t_color2 from_rgb(int r, int g, int b)
+{
+	t_color2 result;
+	result.red = (float)r / 256;
+	result.green = (float)g / 256;
+	result.blue = (float)b / 256;
 	return (result);
 }
 

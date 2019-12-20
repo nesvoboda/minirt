@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:51:24 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/19 10:52:56 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 14:55:32 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include "intersect.h"
 # include "shading.h"
 # include "color2.h"
+# include "get_next_line.h"
+# include "parser.h"
 # include <stdlib.h>
 # define IMG_HEIGHT 1000
 # define IMG_WIDTH 1000
