@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:12 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/19 19:01:58 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 12:24:47 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,18 @@ t_list		*get_lights()
 	//light = new_light(0xff, 0.5, create_v3(5, 5, 0));
 	//ft_lstadd_back(&result, ft_lstnew(light));
 	return (result);
+}
+
+t_scene		*get_scene()
+{
+	t_scene *scene;
+
+	scene = malloc(sizeof(t_scene));
+	scene->objects = get_objects();
+	scene->lights = get_lights();
+
+	return (scene);
+
+	// scene->camera.direction = create_v3(0, 0, 1);
+	// scene->camera.origin = create_v3(0, 0, 0);
 }

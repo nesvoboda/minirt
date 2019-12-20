@@ -6,13 +6,13 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 09:15:47 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 09:18:16 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 12:24:37 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void send_rays(void *mlx_ptr, void *window, t_list *objects, t_list *lights)
+void send_rays(void *mlx_ptr, void *window, t_scene *scene)
 {
 	int x;
 	int y;
@@ -28,7 +28,7 @@ void send_rays(void *mlx_ptr, void *window, t_list *objects, t_list *lights)
 		{
 			sent = ray_to_pixel(x, y);
 			//printf("Sent ray. Origin: x: %f y: %f z: %f. direction: x %f y %f z %f\n", sent.origin.x, sent.origin.y, sent.origin.z, sent.direction.x, sent.direction.y, sent.direction.z);
-			mlx_pixel_put(mlx_ptr, window, x, y, get_color(objects, lights, sent));
+			mlx_pixel_put(mlx_ptr, window, x, y, get_color(scene, sent));
 
 			x++;
 		}
@@ -41,15 +41,13 @@ int main()
 {
 	void *id = mlx_init ();
 	void *window = mlx_new_window (id, IMG_WIDTH, IMG_HEIGHT, "lol");
-	t_list *objects;
-	t_list *lights;
-	t_object *this_object;
+	t_scene *scene;
 
-	lights = get_lights();
-	objects = get_objects();
+	scene = get_scene();
+
 	//mlx_string_put(id, window, 20, 20, 0xfffafa, "Hello World!");
 
-	send_rays(id, window, objects, lights);
+	send_rays(id, window, scene);
 	mlx_loop(id);
 	return (0);
 }

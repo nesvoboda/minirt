@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:41:19 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/19 18:29:23 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 12:10:55 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_color2		light_contribution(t_light light, t_v3 hit_point, t_v3 hit_normal, t_l
 	return (result);
 }
 
-t_color2		shade(t_list *objects, t_list *lights, t_ray sent, t_object *closest_object, double t_min)
+t_color2		shade(t_scene *scene, t_ray sent, t_object *closest_object, double t_min)
 {
 	t_v3	hit_point;
 	t_v3	hit_normal;
@@ -110,10 +110,10 @@ t_color2		shade(t_list *objects, t_list *lights, t_ray sent, t_object *closest_o
 	hit_normal = get_normal(hit_point, closest_object);
 	if (dot_product(sent.direction, hit_normal) > 0)
 	 	hit_normal = substract(create_v3(0, 0, 0), v3_multiply(hit_normal, 1));
-	runner = lights;
+	runner = scene->lights;
 	while (runner != NULL)
 	{
-		addition = light_contribution(*(t_light *)(runner->content), hit_point, hit_normal, objects, closest_object, sent);
+		addition = light_contribution(*(t_light *)(runner->content), hit_point, hit_normal, scene->objects, closest_object, sent);
 		result = color2_add(result, addition);
 		//coeff += light_contribution(*(t_light *)(runner->content), hit_point, hit_normal, objects, closest_object);
 		runner = runner->next;
@@ -121,7 +121,7 @@ t_color2		shade(t_list *objects, t_list *lights, t_ray sent, t_object *closest_o
 	return (result);
 }
 
-int		get_color(t_list *objects, t_list *lights, t_ray sent)
+int		get_color(t_scene *scene, t_ray sent)
 {
 
 	double t_min;
@@ -138,10 +138,10 @@ int		get_color(t_list *objects, t_list *lights, t_ray sent)
 	t_color2 result;
 	t_color2 addition;
 
-	if (intersect_with_all(objects, sent, &closest_object, &t_min))
+	if (intersect_with_all(scene->objects, sent, &closest_object, &t_min))
 	{
 
-		addition = shade(objects, lights, sent, closest_object, t_min);
+		addition = shade(scene, sent, closest_object, t_min);
 		// coeff = shade(objects, lights, sent, closest_object, t_min);
 		// amb_color = color_coefficient(0xff, amb_intensity);
 		// color_result = color_coefficient(closest_object->color, fmin(0.99, coeff));

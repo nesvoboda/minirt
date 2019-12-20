@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:28 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 10:06:43 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/20 12:12:09 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,21 @@
 
 # include "v3.h"
 # include "list.h"
+
+// typedef struct s_camera
+// {
+// 	t_v3 origin;
+// 	t_v3 direction;
+// }				t_camera;
+
+typedef struct s_scene
+{
+	t_list		*objects;
+	t_list		*lights;
+//	t_camera	camera;
+}				t_scene;
+
+
 
 typedef enum object_type
 {
@@ -30,8 +45,8 @@ typedef enum object_type
 typedef struct	s_object
 {
 	otype	type;
-	void *ptr;
-	int color;
+	void	*ptr;
+	int		color;
 	double	albedo;
 
 }				t_object;
@@ -47,5 +62,6 @@ t_light			*new_light(int color, double intensity, t_v3 p0);
 t_object		*new_object(otype type, void *ptr, int color);
 t_list			*get_objects();
 t_list			*get_lights();
+t_scene			*get_scene();
 
 #endif
