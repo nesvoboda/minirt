@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 09:54:58 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/20 11:37:30 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/21 20:00:35 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 t_v3 multiply_by_matrix(t_v3 p, t_matrix m)
 {
-	p.x = p.x * m.d[0][0] + p.y * m.d[1][0] + p.z * m.d[2][0] + m.d[3][0];
-	p.y = p.x * m.d[0][1] + p.y * m.d[1][1] + p.z * m.d[2][1] + m.d[3][1];
-	p.z = p.x * m.d[0][2] + p.y * m.d[1][2] + p.z * m.d[2][2] + m.d[3][2];
-	return (p);
+	t_v3 res;
+	res.x = p.x * m.d[0][0] + p.y * m.d[1][0] + p.z * m.d[2][0] + m.d[3][0];
+	res.y = p.x * m.d[0][1] + p.y * m.d[1][1] + p.z * m.d[2][1] + m.d[3][1];
+	res.z = p.x * m.d[0][2] + p.y * m.d[1][2] + p.z * m.d[2][2] + m.d[3][2];
+	return (res);
 }
 
 t_matrix lookAt(t_v3 origin, t_v3 cam_vector)
@@ -28,7 +29,9 @@ t_matrix lookAt(t_v3 origin, t_v3 cam_vector)
 	normalize_vector(&random);
 
 	t_v3 right = cross_product(random, cam_vector);
+	normalize_vector(&right);
 	t_v3 up = cross_product(cam_vector, right);
+	normalize_vector(&up);
 	m.d[0][0] = right.x;
 	m.d[0][1] = right.y;
 	m.d[0][2] = right.z;

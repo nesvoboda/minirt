@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:49:49 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/20 18:40:10 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/21 17:09:20 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,24 @@ void parse_camera(char *line, t_scene *scene)
 {
 	int i;
 	int move;
+	t_camera *camera;
 
+	camera = malloc(sizeof(t_camera));
 	i = 1;
-	scene->camera.origin.x = atod_len(&line[i], &move);
+	camera->origin.x = atod_len(&line[i], &move);
 	i += move+1;
-	scene->camera.origin.y = atod_len(&line[i], &move);
+	camera->origin.y = atod_len(&line[i], &move);
 	i += move+1;
-	scene->camera.origin.z = atod_len(&line[i], &move);
+	camera->origin.z = atod_len(&line[i], &move);
 	i += move + 1;
-	scene->camera.direction.x = atod_len(&line[i], &move);
+	camera->direction.x = atod_len(&line[i], &move);
 	i += move+1;
-	scene->camera.direction.y = atod_len(&line[i], &move);
+	camera->direction.y = atod_len(&line[i], &move);
 	i += move+1;
-	scene->camera.direction.z = atod_len(&line[i], &move);
+	camera->direction.z = atod_len(&line[i], &move);
 	i += move+1;
-	scene->camera.fov = ft_atoi_len(&line[i], &move);
+	camera->fov = ft_atoi_len(&line[i], &move);
+	ft_lstadd_back(&(scene->cameras), ft_lstnew(camera));
 }
 
 void parse_light(char *line, t_scene *scene)
@@ -287,9 +290,10 @@ void parse_plane(char *line, t_scene *scene)
 
 void	parse_line(char *line, t_scene *scene)
 {
+	printf("Parsing line: %s\n", line);
 	if (line[0] == '\0')
 		return ;
-		char first = line[0];
+	char first = line[0];
 	char second = line[1];
 	if (first == 'R')
 		parse_resolution(line, scene);
@@ -325,6 +329,7 @@ t_scene *parse_file(char *path)
 	scene = malloc(sizeof(t_scene));
 	scene->objects = NULL;
 	scene->lights = NULL;
+	scene->cameras = NULL;
 	while ((ret = get_next_line(fd, &line)) > 0)
 		parse_line(line, scene);
 

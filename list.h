@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 10:53:27 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/17 13:53:00 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/21 17:20:34 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ typedef struct	s_list
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstadd_back(t_list **alst, t_list *new);
 t_list			*ft_lstnew(void *content);
+int				ft_lstsize(t_list *lst);
 
 # endif

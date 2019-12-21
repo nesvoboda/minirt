@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:41:19 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/20 18:41:51 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/21 19:46:30 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_color2		light_contribution(t_light light, t_v3 hit_point, t_v3 hit_normal, t_l
 	t_color2 light_color;
 	light_color = color2_coeff(light.color, light.intensity);
 	t_color2 object_color;
-	object_color = color2_coeff(closest_object->color, closest_object->albedo);
+	object_color = closest_object->color;
 	t_color2 specular_color;
 
 
@@ -73,16 +73,16 @@ t_color2		light_contribution(t_light light, t_v3 hit_point, t_v3 hit_normal, t_l
 	{
 
 		coeff = fmax(0, dot_product(hit_normal, light_vector));
-		reflectance_vector = substract(
-										v3_multiply(
-											v3_multiply(hit_normal,
-											dot_product(
-												sent.direction,
-												hit_normal)) ,2), sent.direction);
-		//reflectance_vector = substract(create_v3(0, 0, 0), reflectance_vector);
-		specular_coeff = fmax(0, dot_product(
-									reflectance_vector,
-										sent.direction));
+		// reflectance_vector = substract(
+		// 								v3_multiply(
+		// 									v3_multiply(hit_normal,
+		// 									dot_product(
+		// 										sent.direction,
+		// 										hit_normal)) ,2), sent.direction);
+		// //reflectance_vector = substract(create_v3(0, 0, 0), reflectance_vector);
+		// specular_coeff = fmax(0, dot_product(
+		// 							reflectance_vector,
+		// 								sent.direction));
 
 		t_color2 specular_color = color2_add(
 									color2_coeff(object_color, 0.1),

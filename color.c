@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:47:57 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/09 14:28:26 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/21 19:41:24 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ t_color int_to_color(int color)
 }
 
 int color_to_int(t_color color)
+{
+	union int_color a;
+
+	a.comps[2] = color.red;
+	a.comps[1] = color.green;
+	a.comps[0] = color.blue;
+	return (a.integer);
+}
+
+int color_to_int2(t_color color)
 {
 	union int_color a;
 

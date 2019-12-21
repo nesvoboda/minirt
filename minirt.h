@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:51:24 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/20 14:55:32 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/21 19:41:44 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,25 @@
 # define IMG_HEIGHT 1000
 # define IMG_WIDTH 1000
 # define FOV 90
+
+
+typedef struct  s_image {
+    void        *img;
+    int        *addr;
+    int         bits_per_pixel;
+    int         line_length;
+    int         endian;
+}               t_image;
+
+typedef struct s_info
+{
+	t_scene		*scene;
+	int			camera_number;
+	void		*id;
+	void		*window;
+	t_image		image;
+}				t_info;
+
+
 
 #endif

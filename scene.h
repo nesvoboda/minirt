@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:28 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/20 18:31:23 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/21 18:54:46 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ typedef struct s_scene
 	int			width;
 	int			height;
 	double		ambient_intensity;
-	t_color2		ambient_color;
-	t_camera	camera;
+	t_color2	ambient_color;
+	t_list		*cameras;
+	int			selected_camera;
 }				t_scene;
 
 
