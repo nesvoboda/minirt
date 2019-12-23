@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 09:17:58 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 18:51:25 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 21:00:20 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ double	vector_len(t_v3 vector)
 
 double	dot_product(t_v3 a, t_v3 b)
 {
-	double sum = 0;
+	double sum;
 
 	sum = (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
-	return sum;
+	return (sum);
 }

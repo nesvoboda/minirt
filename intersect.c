@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:39:53 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 10:07:37 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 20:59:10 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int		intersect(t_ray sent, t_object *object, double *t)
 		return (intersect_triangle(sent, *(t_triangle *)object->ptr, t));
 	else if (object->type == SQUARE)
 		return (intersect_square(sent, *(t_square *)object->ptr, t));
-	else if (object->type == CYLINDER)
+	else
 		return (intersect_cylinder(sent, *(t_cylinder *)object->ptr, t));
-
 }
 
-int		intersect_with_all(t_list *objects, t_ray sent, t_object **closest_object, double *t_min)
+int		intersect_with_all(t_list *objects, t_ray sent,
+									t_object **closest_object, double *t_min)
 {
 	t_list		*runner;
 	t_object	*this_object;
@@ -50,9 +50,7 @@ int		intersect_with_all(t_list *objects, t_ray sent, t_object **closest_object, 
 		runner = runner->next;
 	}
 	if (*closest_object != NULL)
-	{
 		return (1);
-	}
 	else
 		return (0);
 }

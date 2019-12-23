@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:48:36 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:27:18 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 21:02:05 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int			intersect_sphere(t_ray ray, t_sphere sphere, double *t)
 
 	if (get_roots(&t0, &t1, ray, sphere) == 0)
 		return (0);
-
 	if (t0 < 0)
 	{
 		t0 = t1;

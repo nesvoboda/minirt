@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:28 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:41:41 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 21:04:06 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct	s_scene
 	int			selected_camera;
 }				t_scene;
 
-typedef enum	object_type
+typedef enum	e_object_type
 {
 	SPHERE,
 	CUBE,
@@ -46,7 +46,7 @@ typedef enum	object_type
 	TRIANGLE,
 	SQUARE,
 	CYLINDER,
-}				otype;
+}				t_otype;
 
 typedef struct	s_object
 {
@@ -57,7 +57,7 @@ typedef struct	s_object
 
 }				t_object;
 
-typedef struct s_light
+typedef struct	s_light
 {
 	t_v3		p0;
 	double		intensity;

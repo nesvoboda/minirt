@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   triangle.h                                         :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/17 12:43:27 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 21:01:13 by ashishae         ###   ########.fr       */
+/*   Created: 2019/12/23 20:31:01 by ashishae          #+#    #+#             */
+/*   Updated: 2019/12/23 20:31:12 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TRIANGLE_H
-# define TRIANGLE_H
-# include "v3.h"
-# include "ray.h"
+#include "shading.h"
 
-typedef struct	s_triangle
+t_inter		new_inter(t_v3 hit_point, t_v3 hit_normal, t_list *objects,
+													t_object *closest_object)
 {
-	t_v3 a;
-	t_v3 b;
-	t_v3 c;
+	t_inter inter;
 
-}				t_triangle;
+	inter.hit_point = hit_point;
+	inter.hit_normal = hit_normal;
+	inter.objects = objects;
+	inter.closest_object = closest_object;
 
-t_triangle		*new_triangle(t_v3 a, t_v3 b, t_v3 c);
-t_v3			get_triangle_normal(t_triangle triangle);
-int				check_edges(t_triangle triangle, t_v3 p, t_v3 n);
-int				intersect_triangle(t_ray ray, t_triangle triangle, double *t);
-
-#endif
+	return (inter);
+}

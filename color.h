@@ -6,12 +6,14 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:48:15 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/21 19:28:18 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 20:57:32 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 #define COLOR_H
+
+# include "math.h"
 
 typedef struct 	s_color
 {
@@ -19,11 +21,14 @@ typedef struct 	s_color
 	int green;
 	int blue;
 }				t_color;
+
+union	int_color
+{
+	int integer;
+	unsigned char comps[4];
+};
+
 t_color			int_to_color(int color);
 int				color_to_int(t_color color);
-int				color_coefficient(int int_color, double coefficient);
-int				color_concat(int c1, int c2);
-int				color_add(int int_color, double add);
-int				color_to_int2(t_color color);
 
 #endif

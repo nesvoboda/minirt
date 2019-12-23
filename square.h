@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:09:58 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:10:55 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 21:01:48 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct	s_square
 {
-	t_v3 center;
-	t_v3 normal;
-	double length;
+	t_v3	center;
+	t_v3	normal;
+	double	length;
 }				t_square;
 
 t_square		*new_square(t_v3 center, t_v3 normal, double length);

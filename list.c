@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 10:52:06 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/21 18:46:07 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 20:58:21 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
 	t_list *last;
@@ -35,7 +34,6 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 		last->next = new;
 	}
 }
-
 
 t_list	*ft_lstnew(void *content)
 {
