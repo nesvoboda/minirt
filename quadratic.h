@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.h                                           :+:      :+:    :+:   */
+/*   quadratic.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/20 09:55:10 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:29:45 by ashishae         ###   ########.fr       */
+/*   Created: 2019/12/23 19:25:29 by ashishae          #+#    #+#             */
+/*   Updated: 2019/12/23 19:28:05 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATRIX_H
-# define MATRIX_H
-# include "v3.h"
+#ifndef QUADRATIC_H
+# define QUADRATIC_H
 
-typedef struct s_matrix
+typedef struct	s_qparams
 {
-	double d[4][4];
-}				t_matrix;
-
-t_v3			multiply_by_matrix(t_v3 p, t_matrix m);
-t_matrix		look_at(t_v3 origin, t_v3 cam_vector);
+	double	a;
+	double	b;
+	double	c;
+}				t_qparams;
+void			swap_doubles(double *a, double *b);
+t_qparams		new_qparams(double a, double b, double c);
+int				solve_quadratic(t_qparams params, double *x0, double *x1);
 
 #endif

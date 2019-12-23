@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:57:02 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/21 19:33:45 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 13:35:47 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ t_color2 color2_add(t_color2 a, t_color2 b)
 {
 	t_color2 result;
 
-	result.red = fmin(a.red + b.red, 1);
-	result.green = fmin(a.green + b.green, 1);
-	result.blue = fmin(a.blue + b.blue, 1);
+	result.red = fmin(a.red + b.red, 0.99);
+	result.green = fmin(a.green + b.green, 0.99);
+	result.blue = fmin(a.blue + b.blue, 0.99);
 	return(result);
 }
 

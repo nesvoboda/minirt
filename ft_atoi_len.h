@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.h                                           :+:      :+:    :+:   */
+/*   ft_atoi_len.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/20 09:55:10 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:29:45 by ashishae         ###   ########.fr       */
+/*   Created: 2019/12/23 13:45:44 by ashishae          #+#    #+#             */
+/*   Updated: 2019/12/23 18:45:18 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATRIX_H
-# define MATRIX_H
-# include "v3.h"
+#ifndef FT_ATOI_LEN_H
+# define FT_ATOI_LEN_H
 
-typedef struct s_matrix
-{
-	double d[4][4];
-}				t_matrix;
+# include "unistd.h"
 
-t_v3			multiply_by_matrix(t_v3 p, t_matrix m);
-t_matrix		look_at(t_v3 origin, t_v3 cam_vector);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int	ft_atoi_len(const char *str, int *len);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+double ten_to(int pow);
+double dot_part(char *str, int *len);
+double atod_len(char *str, int *len);
 
 #endif

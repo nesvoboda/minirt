@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:50:13 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/17 13:54:24 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 19:27:47 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 # include "v3.h"
 # include "ray.h"
+# include "quadratic.h"
 
 typedef struct	s_sphere
 {
-	t_v3 center;
-	double radius;
+	t_v3	center;
+	double	radius;
 }				t_sphere;
+
 t_sphere		*new_sphere(t_v3 center, double radius);
 t_v3			get_sphere_normal(t_v3 point, t_sphere sphere);
-void			swap_doubles(double *a, double *b);
-int				solveQuadratic(double a, double b, double c, double *x0,
-								double *x1);
 int				intersect_sphere(t_ray ray, t_sphere sphere, double *t);
+int				get_roots(double *t0, double *t1, t_ray ray, t_sphere sphere);
 
 #endif

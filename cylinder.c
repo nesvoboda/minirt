@@ -6,13 +6,14 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:45:32 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/18 19:27:36 by ashishae         ###   ########.fr       */
+/*   Updated: 2019/12/23 19:37:16 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cylinder.h"
 #include "plane.h"
 #include <math.h>
+#include "quadratic.h"
 
 t_cylinder	*new_cylinder(t_v3 p, t_v3 normal, double radius, double height)
 {
@@ -56,7 +57,7 @@ int				intersect_cylinder(t_ray ray, t_cylinder cylinder, double *t)
 	double c = dot_product(right, right) - (cylinder.radius * cylinder.radius);
 
 	double t0, t1;
-	if (!solveQuadratic(a, b, c, &t0, &t1))
+	if (!solve_quadratic(new_qparams(a, b, c), &t0, &t1))
 		return (0);
 
 	t_v3 q;
