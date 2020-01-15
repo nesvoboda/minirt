@@ -6,9 +6,11 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 19:06:27 by ashishae          #+#    #+#             */
-/*   Updated: 2020/01/15 19:08:07 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/15 19:09:46 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "parser.h"
 
 void	check_scene(t_scene *scene)
 {
