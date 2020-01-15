@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 20:54:58 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 20:55:15 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:52:59 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_color2	int_color(int color)
 	result.red = (float)this.red / 256;
 	result.green = (float)this.green / 256;
 	result.blue = (float)this.blue / 256;
-
 	return (result);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 09:55:10 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:29:45 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:04:42 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MATRIX_H
 # include "v3.h"
 
-typedef struct s_matrix
+typedef struct	s_matrix
 {
 	double d[4][4];
 }				t_matrix;

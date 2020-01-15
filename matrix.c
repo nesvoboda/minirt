@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 09:54:58 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:29:27 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:04:29 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_matrix	look_at(t_v3 origin, t_v3 cam_vector)
 
 	random = create_v3(0, 1, 0);
 	normalize_vector(&random);
-
 	right = cross_product(random, cam_vector);
 	normalize_vector(&right);
 	up = cross_product(cam_vector, right);

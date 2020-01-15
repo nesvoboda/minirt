@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:41:19 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 21:01:28 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/15 17:39:31 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,25 @@ t_v3		get_normal(t_v3 point, t_object *object)
 		return (get_triangle_normal(*(t_triangle *)object->ptr));
 	if (object->type == SQUARE)
 		return (get_square_normal(*(t_square *)object->ptr));
-	if (object->type == CYLINDER)
+	else
 		return (get_cylinder_normal(point, *(t_cylinder *)object->ptr));
 }
 
-t_color2	mix_colors(t_light light, t_object *object, double coeff)
+t_color2	mix_colors(t_light light, double coeff, t_inter inter,
+						t_scene scene)
 {
 	t_color2	result;
 	t_color2	light_color;
 	t_color2	object_color;
 
 	light_color = color2_coeff(light.color, light.intensity);
-	object_color = object->color;
+	object_color = inter.closest_object->color;
 	result = color2_coeff(color2_mult(light_color, object_color), coeff);
+	result = color2_add(result, specular(light, inter));
 	return (result);
 }
 
-t_color2	light_contribution(t_light light, t_inter inter)
+t_color2	light_contribution(t_light light, t_inter inter, t_scene scene)
 {
 	t_object	*closest_object2;
 	double		t;
@@ -51,12 +53,12 @@ t_color2	light_contribution(t_light light, t_inter inter)
 	normalize_vector(&light_ray);
 	lray = create_ray(v3_add(inter.hit_point,
 								v3_multiply(inter.hit_normal, 0.1)), light_ray);
-	if (!intersect_with_all(inter.objects, lray, &closest_object2, &t)
+	if (!intersect_with_all(scene.objects, lray, &closest_object2, &t)
 					|| t > vector_len(substract(light.p0, inter.hit_point)))
 	{
 		coeff = fmax(0, dot_product(inter.hit_normal, light_ray));
 	}
-	return (mix_colors(light, inter.closest_object, coeff));
+	return (mix_colors(light, coeff, inter, scene));
 }
 
 t_color2	shade(t_scene *scene, t_ray sent, t_object *closest_object,
@@ -77,7 +79,8 @@ t_color2	shade(t_scene *scene, t_ray sent, t_object *closest_object,
 	while (runner != NULL)
 	{
 		addition = light_contribution(*(t_light *)(runner->content),
-		new_inter(hit_point, hit_normal, scene->objects, closest_object));
+		new_inter(hit_point, hit_normal, closest_object, sent),
+					*scene);
 		result = color2_add(result, addition);
 		runner = runner->next;
 	}

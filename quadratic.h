@@ -6,12 +6,13 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 19:25:29 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:28:05 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:02:46 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef QUADRATIC_H
 # define QUADRATIC_H
+# include <math.h>
 
 typedef struct	s_qparams
 {

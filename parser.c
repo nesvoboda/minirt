@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:49:49 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 18:47:52 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/15 17:12:26 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	parse_line(char *line, t_scene *scene)
 	char	first;
 	char	second;
 
-	if (line[0] == '\0')
-		return ;
 	first = line[0];
 	second = line[1];
 	if (first == 'R')
@@ -39,6 +37,8 @@ void	parse_line(char *line, t_scene *scene)
 		parse_cylinder(line, scene);
 	else if (first == 't' && second == 'r')
 		parse_triangle(line, scene);
+	else if (first != '\n' && first != '\0')
+		handle_error("Unknown element in the scene.");
 }
 
 void	init_scene(t_scene *scene)
@@ -67,6 +67,28 @@ void	check_scene(t_scene *scene)
 		scene->height = 1440;
 }
 
+int		allowed_symbol(char c)
+{
+	if (c == '\t' | c == ' ' | c == '\n' | c == '.' || c == ',' ||
+	(c >= '0' && c <= '9') || c == '-')
+		return (1);
+	return (0);
+}
+
+int		check_line(char *line)
+{
+	int i;
+
+	i = 3;
+	while (line[i])
+	{
+		if (!allowed_symbol(line[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 t_scene	*parse_file(char *path)
 {
 	int		fd;
@@ -84,6 +106,14 @@ t_scene	*parse_file(char *path)
 	scene->cameras = NULL;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
+		//splitted = ft_split(line, ' ');
+		//printf("--- Line ---\n");
+		//for (int i = 0; splitted[i]; i++)
+		//{
+	//		printf("|%s|\n", splitted[i]);
+	//	}
+		if (!check_line(line))
+			handle_error("Forbidden symbol in the scene.");
 		parse_line(line, scene);
 		free(line);
 	}

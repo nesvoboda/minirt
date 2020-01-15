@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/01 10:53:27 by ashishae          #+#    #+#             */
-/*   Updated: 2020/01/14 16:06:12 by ashishae         ###   ########.fr       */
+/*   Created: 2020/01/14 16:01:25 by ashishae          #+#    #+#             */
+/*   Updated: 2020/01/14 16:03:23 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#include "minirt.h"
 
-# include <stdlib.h>
-
-typedef struct	s_list
+int	main(int ac, char **av)
 {
-	void			*content;
-	struct s_list	*next;
-}				t_list;
-
-t_list			*ft_lstlast(t_list *lst);
-void			ft_lstadd_back(t_list **alst, t_list *new);
-t_list			*ft_lstnew(void *content);
-int				ft_lstsize(t_list *lst);
-
-#endif
+	if (ac < 2 || ac > 3)
+		return (42);
+	else
+	{
+		if (ac == 2)
+			minirt(av[1], 0);
+		else if (ft_strncmp(av[2], "--save", ft_strlen(av[2])) == 0)
+			minirt(av[1], 1);
+	}
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:57:28 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 21:04:06 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:22:30 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef enum	e_object_type
 
 typedef struct	s_object
 {
-	otype		type;
+	t_otype		type;
 	void		*ptr;
 	t_color2	color;
 	double		albedo;

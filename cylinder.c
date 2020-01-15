@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:45:32 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 20:51:42 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:08:18 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_v3		get_cylinder_normal(t_v3 point, t_cylinder cylinder)
 	return (normal);
 }
 
-void	check_t(double *t, t_cylinder cylinder, t_ray ray)
+void		check_t(double *t, t_cylinder cylinder, t_ray ray)
 {
 	t_v3 q;
 	t_v3 p2;
@@ -49,7 +49,8 @@ void	check_t(double *t, t_cylinder cylinder, t_ray ray)
 		*t = -1;
 }
 
-int		cyl_get_roots(double *t0, double *t1, t_cylinder cylinder, t_ray ray)
+int			cyl_get_roots(double *t0, double *t1, t_cylinder cylinder,
+								t_ray ray)
 {
 	t_v3	a_sqrt;
 	t_v3	right;

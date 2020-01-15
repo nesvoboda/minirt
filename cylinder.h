@@ -6,25 +6,25 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:43:26 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 20:57:53 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:08:59 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CYLINDER_H
 # define CYLINDER_H
 
-#include "v3.h"
-#include "sphere.h"
-#include "plane.h"
-#include <math.h>
-#include "quadratic.h"
+# include "v3.h"
+# include "sphere.h"
+# include "plane.h"
+# include <math.h>
+# include "quadratic.h"
 
 typedef struct	s_cylinder
 {
-	t_v3 p;
-	t_v3 normal;
-	double radius;
-	double height;
+	t_v3	p;
+	t_v3	normal;
+	double	radius;
+	double	height;
 }				t_cylinder;
 
 t_cylinder		*new_cylinder(t_v3 p, t_v3 normal, double radius,

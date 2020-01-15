@@ -6,13 +6,13 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 19:25:07 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 19:38:47 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:53:36 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "quadratic.h"
 
-void	swap_doubles(double *a, double *b)
+void		swap_doubles(double *a, double *b)
 {
 	double buffer;
 
@@ -31,7 +31,7 @@ t_qparams	new_qparams(double a, double b, double c)
 	return (params);
 }
 
-int		solve_quadratic(t_qparams params, double *x0, double *x1)
+int			solve_quadratic(t_qparams params, double *x0, double *x1)
 {
 	double discr;
 	double q;

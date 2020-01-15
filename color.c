@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:47:57 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 20:57:25 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:09:25 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_color	int_to_color(int color)
 {
-	union int_color	a;
-	t_color			result;
+	t_int_color	a;
+	t_color		result;
 
 	a.integer = color;
 	result.red = a.comps[2];
@@ -26,7 +26,7 @@ t_color	int_to_color(int color)
 
 int		color_to_int(t_color color)
 {
-	union int_color a;
+	t_int_color a;
 
 	a.comps[2] = color.red;
 	a.comps[1] = color.green;

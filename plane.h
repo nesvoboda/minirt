@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:54:27 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/17 13:53:30 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:03:08 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "v3.h"
 # include "ray.h"
 
-typedef struct s_plane
+typedef struct	s_plane
 {
 	t_v3 p0;
 	t_v3 normal;

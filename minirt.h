@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:51:24 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 13:46:30 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:03:53 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@
 # include "get_next_line.h"
 # include "parser.h"
 # include "ft_atoi_len.h"
+# include "buffer.h"
 # include <stdlib.h>
 # define IMG_HEIGHT 1000
 # define IMG_WIDTH 1000
 # define FOV 90
 
+typedef	struct	s_image {
+	void		*img;
+	int			*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_image;
 
-typedef struct  s_image {
-    void        *img;
-    int        *addr;
-    int         bits_per_pixel;
-    int         line_length;
-    int         endian;
-}               t_image;
-
-typedef struct s_info
+typedef struct	s_info
 {
 	t_scene		*scene;
 	int			camera_number;
@@ -55,6 +55,6 @@ typedef struct s_info
 	t_image		image;
 }				t_info;
 
-
+void			minirt(char *filename, int save);
 
 #endif

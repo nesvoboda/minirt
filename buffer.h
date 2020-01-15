@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   buffer.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/01 10:53:27 by ashishae          #+#    #+#             */
-/*   Updated: 2020/01/14 16:06:12 by ashishae         ###   ########.fr       */
+/*   Created: 2020/01/14 15:55:36 by ashishae          #+#    #+#             */
+/*   Updated: 2020/01/15 13:21:28 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef BUFFER_H
+# define BUFFER_H
+# include "bmp.h"
+# include "color.h"
+# include "stdlib.h"
 
-# include <stdlib.h>
-
-typedef struct	s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
-
-t_list			*ft_lstlast(t_list *lst);
-void			ft_lstadd_back(t_list **alst, t_list *new);
-t_list			*ft_lstnew(void *content);
-int				ft_lstsize(t_list *lst);
+t_pixel	**create_buffer(int height, int width);
+void	free_buffer(t_pixel **buffer, int height, int width);
+t_pixel	pix_from_int(int color);
 
 #endif
