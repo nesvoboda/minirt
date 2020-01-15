@@ -6,11 +6,35 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:37:12 by ashishae          #+#    #+#             */
-/*   Updated: 2020/01/15 17:43:42 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/15 18:09:46 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_atoi_len.h"
+
+int	ft_atoi(const char *str)
+{
+	int		nbr;
+	int		sign;
+
+	nbr = 0;
+	sign = 1;
+	while ((*str) == '\t' || (*str) == '\n' || (*str) == '\v' || (*str) == '\f'
+			|| (*str) == '\r' || (*str) == ' ')
+		str++;
+	if ((*str) == '-' || (*str) == '+')
+	{
+		sign *= ((*str) == '-' ? -1 : 1);
+		str++;
+	}
+	while ((*str) != '\0' && (*str) >= '0' && (*str) <= '9')
+	{
+		nbr *= 10;
+		nbr += (*str) - '0';
+		str++;
+	}
+	return (nbr * sign);
+}
 
 int		ft_atoi_len(const char *str, int *len)
 {
@@ -115,5 +139,33 @@ double	atod_len(char *str, int *len)
 		nbr += dot_part(&str[i], &i);
 	}
 	*len = i;
+	return (nbr * sign);
+}
+
+double	ft_atod(char *str)
+{
+	double		nbr;
+	double		sign;
+	int			i;
+
+	nbr = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
+			|| str[i] == '\r' || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		sign *= (str[i++] == '-' ? -1 : 1);
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	{
+		nbr *= 10;
+		nbr += str[i] - '0';
+		i++;
+	}
+	if (str[i] == '.')
+	{
+		i++;
+		nbr += dot_part(&str[i], &i);
+	}
 	return (nbr * sign);
 }

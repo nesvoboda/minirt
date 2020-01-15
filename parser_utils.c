@@ -6,7 +6,7 @@
 /*   By: ashishae <ashishae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 18:34:29 by ashishae          #+#    #+#             */
-/*   Updated: 2019/12/23 18:36:08 by ashishae         ###   ########.fr       */
+/*   Updated: 2020/01/15 17:53:02 by ashishae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ void	parse_coordinates(t_v3 *point, char *line, int *i, int *move)
 	*i += *move + 1;
 	point->z = atod_len(&line[*i], move);
 	*i += *move;
+}
+
+int		line_fields(char **splitted)
+{
+	int i;
+
+	i = 0;
+	while (splitted[i])
+		i++;
+	return (i);
 }
