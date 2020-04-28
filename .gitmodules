@@ -1,0 +1,3 @@
+[submodule "MinilibX"]
+	path = MinilibX
+	url = https://github.com/pbondoer/MinilibX.git

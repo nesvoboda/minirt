@@ -13,7 +13,7 @@
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include <mlx.h>
+# include "../MinilibX/sierra/mlx.h"
 # include <math.h>
 # include "v3.h"
 # include "ray.h"

@@ -31,7 +31,8 @@ all:		$(NAME)
 			gcc $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			gcc -o $(NAME) $(OBJS) $(CFLAGS) -lmlx
+			make -C ./MinilibX
+			gcc -o $(NAME) $(OBJS) $(CFLAGS) -lmlx -L./MinilibX -framework OpenGL -framework AppKit
 
 clean:
 			rm -f $(OBJS)
