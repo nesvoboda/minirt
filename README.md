@@ -6,8 +6,14 @@ A minimal raytracing engine writtent in C and MiniLibX.
 ![Minirt Screenshot](https://imgur.com/HACh0XE.png)
 
 ## How to install
-1. Clone the repo and `cd` into it.
-2. `make` to compile it.
+1. Clone the repo:
+```
+git@github.com:nesvoboda/minirt.git --recursive
+```
+2. `cd` into it and `make` to compile it:
+```
+cd minirt && make
+```
 3. Now `./miniRT ./scenes/scene.rt`
 
 There are some scenes in the `scenes` folder that showcase minirt.
